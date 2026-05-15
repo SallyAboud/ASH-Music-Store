@@ -1,0 +1,240 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.shape.*?>
+
+<VBox spacing="0" prefWidth="560"
+  style="-fx-background-color: #1a0a2e;"
+  xmlns="http://javafx.com/javafx/8"
+  xmlns:fx="http://javafx.com/fxml/1"
+  fx:controller="org.musicStore.gui.CheckoutController">
+
+  <!-- Header Bar -->
+  <HBox alignment="CENTER_LEFT" spacing="12"
+    style="-fx-padding: 18 24; -fx-background-color: #1e1035;
+           -fx-border-color: rgba(255,255,255,0.07); -fx-border-width: 0 0 1 0;">
+    <StackPane>
+      <Rectangle width="32" height="32" arcWidth="10" arcHeight="10"
+        style="-fx-fill: linear-gradient(to bottom right, #c9a84c, #7c5cbf);" />
+      <Label text="🎸" style="-fx-font-size: 14px;" />
+    </StackPane>
+    <Label text="Complete Your Purchase"
+      style="-fx-font-family: 'Georgia'; -fx-font-size: 18px;
+             -fx-font-weight: bold; -fx-text-fill: #e8e8f0;" />
+  </HBox>
+
+  <!-- Body -->
+  <ScrollPane fitToWidth="true" VBox.vgrow="ALWAYS"
+    style="-fx-background-color: transparent; -fx-background: transparent; -fx-border-width: 0;">
+    <VBox spacing="20" style="-fx-padding: 24;">
+
+      <!-- Shipping Section -->
+      <VBox spacing="12"
+        style="-fx-background-color: #12121a;
+               -fx-border-color: rgba(255,255,255,0.07);
+               -fx-border-radius: 14; -fx-background-radius: 14; -fx-border-width: 1;
+               -fx-padding: 18;">
+        <Label text="SHIPPING INFORMATION"
+          style="-fx-font-size: 10px; -fx-font-weight: bold;
+                 -fx-text-fill: #6b6b85; -fx-letter-spacing: 1.5px;" />
+        <Separator style="-fx-background-color: rgba(255,255,255,0.06);" />
+
+        <GridPane hgap="12" vgap="12">
+          <columnConstraints>
+            <ColumnConstraints prefWidth="120" />
+            <ColumnConstraints hgrow="ALWAYS" />
+          </columnConstraints>
+
+          <Label text="Full Name" GridPane.rowIndex="0"
+            style="-fx-text-fill: #8b8ba0; -fx-font-size: 12px;" />
+          <TextField fx:id="nameField" promptText="Your full name"
+            GridPane.columnIndex="1" GridPane.rowIndex="0"
+            style="-fx-background-color: rgba(255,255,255,0.04);
+                   -fx-border-color: rgba(255,255,255,0.09);
+                   -fx-border-radius: 10; -fx-background-radius: 10; -fx-border-width: 1;
+                   -fx-text-fill: #e8e8f0; -fx-prompt-text-fill: #3a3a55;
+                   -fx-font-size: 13px; -fx-padding: 10 14;" />
+
+          <Label text="Email" GridPane.rowIndex="1"
+            style="-fx-text-fill: #8b8ba0; -fx-font-size: 12px;" />
+          <TextField fx:id="emailField" promptText="example@mail.com"
+            GridPane.columnIndex="1" GridPane.rowIndex="1"
+            style="-fx-background-color: rgba(255,255,255,0.04);
+                   -fx-border-color: rgba(255,255,255,0.09);
+                   -fx-border-radius: 10; -fx-background-radius: 10; -fx-border-width: 1;
+                   -fx-text-fill: #e8e8f0; -fx-prompt-text-fill: #3a3a55;
+                   -fx-font-size: 13px; -fx-padding: 10 14;" />
+
+          <Label text="Phone" GridPane.rowIndex="2"
+            style="-fx-text-fill: #8b8ba0; -fx-font-size: 12px;" />
+          <TextField fx:id="phoneField" promptText="01xxxxxxxxx"
+            GridPane.columnIndex="1" GridPane.rowIndex="2"
+            style="-fx-background-color: rgba(255,255,255,0.04);
+                   -fx-border-color: rgba(255,255,255,0.09);
+                   -fx-border-radius: 10; -fx-background-radius: 10; -fx-border-width: 1;
+                   -fx-text-fill: #e8e8f0; -fx-prompt-text-fill: #3a3a55;
+                   -fx-font-size: 13px; -fx-padding: 10 14;" />
+
+          <Label text="Address" GridPane.rowIndex="4"
+            style="-fx-text-fill: #8b8ba0; -fx-font-size: 12px;" />
+          <TextArea fx:id="addressArea" prefHeight="72" promptText="Street, Building, City..."
+            GridPane.columnIndex="1" GridPane.rowIndex="4"
+            style="-fx-background-color: rgba(255,255,255,0.04);
+                   -fx-border-color: rgba(255,255,255,0.09);
+                   -fx-border-radius: 10; -fx-background-radius: 10; -fx-border-width: 1;
+                   -fx-text-fill: #e8e8f0; -fx-prompt-text-fill: #3a3a55;
+                   -fx-font-size: 13px; -fx-padding: 10 14;" />
+
+        </GridPane>
+      </VBox>
+
+      <!-- Use Points Section (above Payment Method) -->
+      <VBox spacing="12"
+        style="-fx-background-color: rgba(61,220,132,0.06);
+               -fx-border-color: rgba(61,220,132,0.2);
+               -fx-border-radius: 14; -fx-background-radius: 14; -fx-border-width: 1;
+               -fx-padding: 18;">
+        <Label text="LOYALTY POINTS"
+          style="-fx-font-size: 10px; -fx-font-weight: bold;
+                 -fx-text-fill: #6b6b85; -fx-letter-spacing: 1.5px;" />
+        <Separator style="-fx-background-color: rgba(61,220,132,0.15);" />
+        <Label fx:id="pointsInfoLabel" text="Points: 0  (worth $0.00)"
+          style="-fx-text-fill: #3ddc84; -fx-font-size: 13px; -fx-font-weight: bold;" />
+        <CheckBox fx:id="usePointsCheckBox" text="Apply all points as a discount"
+          style="-fx-text-fill: #e8e8f0; -fx-font-size: 13px; -fx-cursor: hand;" />
+      </VBox>
+
+      <!-- Insurance Section -->
+      <VBox spacing="12"
+        style="-fx-background-color: rgba(100,160,255,0.06);
+               -fx-border-color: rgba(100,160,255,0.2);
+               -fx-border-radius: 14; -fx-background-radius: 14; -fx-border-width: 1;
+               -fx-padding: 18;">
+        <Label text="INSTRUMENT INSURANCE"
+          style="-fx-font-size: 10px; -fx-font-weight: bold;
+                 -fx-text-fill: #6b6b85; -fx-letter-spacing: 1.5px;" />
+        <Separator style="-fx-background-color: rgba(100,160,255,0.15);" />
+        <Label text="Protect your instruments against accidental damage, theft, and loss."
+          style="-fx-text-fill: #8b8ba0; -fx-font-size: 12px; -fx-wrap-text: true;" />
+        <CheckBox fx:id="insuranceCheckBox" text="Add insurance for 10% of order value"
+          style="-fx-text-fill: #e8e8f0; -fx-font-size: 13px; -fx-cursor: hand;" />
+      </VBox>
+
+      <!-- Payment Method Section -->
+      <VBox spacing="14"
+        style="-fx-background-color: #12121a;
+               -fx-border-color: rgba(255,255,255,0.07);
+               -fx-border-radius: 14; -fx-background-radius: 14; -fx-border-width: 1;
+               -fx-padding: 18;">
+        <Label text="PAYMENT METHOD"
+          style="-fx-font-size: 10px; -fx-font-weight: bold;
+                 -fx-text-fill: #6b6b85; -fx-letter-spacing: 1.5px;" />
+        <Separator style="-fx-background-color: rgba(255,255,255,0.06);" />
+
+        <HBox spacing="20" alignment="CENTER_LEFT">
+          <RadioButton fx:id="cashRadio" text="💵  Cash on Delivery" selected="true"
+            style="-fx-text-fill: #e8e8f0; -fx-font-size: 13px; -fx-cursor: hand;">
+            <toggleGroup>
+              <ToggleGroup fx:id="paymentGroup" />
+            </toggleGroup>
+          </RadioButton>
+          <RadioButton fx:id="cardRadio" text="💳  Visa / Credit Card"
+            toggleGroup="$paymentGroup"
+            style="-fx-text-fill: #e8e8f0; -fx-font-size: 13px; -fx-cursor: hand;" />
+        </HBox>
+
+        <!-- Card Details -->
+        <VBox fx:id="cardDetailsBox" spacing="12" visible="false" managed="false"
+          style="-fx-background-color: rgba(124,92,191,0.08);
+                 -fx-border-color: rgba(124,92,191,0.3);
+                 -fx-border-radius: 12; -fx-background-radius: 12; -fx-border-width: 1;
+                 -fx-padding: 16;">
+          <Label text="💳  Card Details"
+            style="-fx-font-weight: bold; -fx-text-fill: #9b7fe0; -fx-font-size: 13px;" />
+
+          <GridPane hgap="12" vgap="10">
+            <columnConstraints>
+              <ColumnConstraints prefWidth="140" />
+              <ColumnConstraints hgrow="ALWAYS" />
+            </columnConstraints>
+
+            <Label text="Card Number" GridPane.rowIndex="0"
+              style="-fx-text-fill: #8b8ba0; -fx-font-size: 12px;" />
+            <TextField fx:id="cardNumberField" promptText="1234 5678 9012 3456"
+              GridPane.columnIndex="1" GridPane.rowIndex="0"
+              style="-fx-background-color: rgba(255,255,255,0.04);
+                     -fx-border-color: rgba(255,255,255,0.09);
+                     -fx-border-radius: 8; -fx-background-radius: 8; -fx-border-width: 1;
+                     -fx-text-fill: #e8e8f0; -fx-prompt-text-fill: #3a3a55; -fx-font-size: 13px; -fx-padding: 9 12;" />
+
+            <Label text="Card Holder" GridPane.rowIndex="1"
+              style="-fx-text-fill: #8b8ba0; -fx-font-size: 12px;" />
+            <TextField fx:id="cardHolderField" promptText="As printed on card"
+              GridPane.columnIndex="1" GridPane.rowIndex="1"
+              style="-fx-background-color: rgba(255,255,255,0.04);
+                     -fx-border-color: rgba(255,255,255,0.09);
+                     -fx-border-radius: 8; -fx-background-radius: 8; -fx-border-width: 1;
+                     -fx-text-fill: #e8e8f0; -fx-prompt-text-fill: #3a3a55; -fx-font-size: 13px; -fx-padding: 9 12;" />
+
+            <Label text="Expiry (MM/YY)" GridPane.rowIndex="2"
+              style="-fx-text-fill: #8b8ba0; -fx-font-size: 12px;" />
+            <TextField fx:id="cardExpiryField" promptText="MM/YY"
+              GridPane.columnIndex="1" GridPane.rowIndex="2"
+              style="-fx-background-color: rgba(255,255,255,0.04);
+                     -fx-border-color: rgba(255,255,255,0.09);
+                     -fx-border-radius: 8; -fx-background-radius: 8; -fx-border-width: 1;
+                     -fx-text-fill: #e8e8f0; -fx-prompt-text-fill: #3a3a55; -fx-font-size: 13px; -fx-padding: 9 12;" />
+
+            <Label text="CVV" GridPane.rowIndex="3"
+              style="-fx-text-fill: #8b8ba0; -fx-font-size: 12px;" />
+            <TextField fx:id="cardCvvField" promptText="3 or 4 digits"
+              GridPane.columnIndex="1" GridPane.rowIndex="3"
+              style="-fx-background-color: rgba(255,255,255,0.04);
+                     -fx-border-color: rgba(255,255,255,0.09);
+                     -fx-border-radius: 8; -fx-background-radius: 8; -fx-border-width: 1;
+                     -fx-text-fill: #e8e8f0; -fx-prompt-text-fill: #3a3a55; -fx-font-size: 13px; -fx-padding: 9 12;" />
+          </GridPane>
+        </VBox>
+      </VBox>
+
+      <!-- Order Total -->
+      <VBox spacing="12"
+        style="-fx-background-color: rgba(201,168,76,0.06);
+               -fx-border-color: rgba(201,168,76,0.2);
+               -fx-border-radius: 14; -fx-background-radius: 14; -fx-border-width: 1;
+               -fx-padding: 18;">
+        <Label text="ORDER SUMMARY"
+          style="-fx-font-size: 10px; -fx-font-weight: bold;
+                 -fx-text-fill: #6b6b85; -fx-letter-spacing: 1.5px;" />
+        <Separator style="-fx-background-color: rgba(201,168,76,0.15);" />
+        <Label fx:id="subtotalLabel" text="Subtotal: $0.00"
+          style="-fx-font-size: 13px; -fx-text-fill: #8b8ba0;" />
+        <Label fx:id="taxLabel" text="Tax (14%): $0.00"
+          style="-fx-font-size: 13px; -fx-text-fill: #8b8ba0;" />
+        <Label fx:id="insuranceLabel" text="Insurance (5%): $0.00" visible="false" managed="false"
+          style="-fx-font-size: 13px; -fx-text-fill: #64a0ff;" />
+        <Separator style="-fx-background-color: rgba(201,168,76,0.15);" />
+        <Label fx:id="totalLabel" text="Total: $0.00"
+          style="-fx-font-family: 'Courier New'; -fx-font-size: 24px;
+                 -fx-font-weight: bold; -fx-text-fill: #c9a84c;" />
+      </VBox>
+
+      <!-- Action Buttons -->
+      <HBox spacing="12" alignment="CENTER_RIGHT">
+        <Button onAction="#closeWindow" text="Cancel"
+          style="-fx-background-color: rgba(255,255,255,0.05);
+                 -fx-border-color: rgba(255,255,255,0.10);
+                 -fx-border-radius: 12; -fx-background-radius: 12; -fx-border-width: 1;
+                 -fx-text-fill: #8b8ba0; -fx-font-size: 14px;
+                 -fx-cursor: hand; -fx-padding: 12 24;" />
+        <Button onAction="#confirmPurchase" text="Confirm Order  →"
+          style="-fx-background-color: linear-gradient(to right, #c9a84c, #9a7030);
+                 -fx-text-fill: #0a0a0f; -fx-font-weight: bold;
+                 -fx-font-size: 14px; -fx-padding: 12 28;
+                 -fx-background-radius: 12; -fx-cursor: hand;
+                 -fx-effect: dropshadow(gaussian, rgba(201,168,76,0.4), 16, 0, 0, 4);" />
+      </HBox>
+    </VBox>
+  </ScrollPane>
+</VBox>

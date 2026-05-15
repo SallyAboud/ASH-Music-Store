@@ -1,0 +1,263 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.shape.*?>
+
+<BorderPane xmlns:fx="http://javafx.com/fxml"
+  fx:controller="org.musicStore.gui.VendorDashboard"
+  prefWidth="1200" prefHeight="780"
+  style="-fx-background-color: #1a0a2e;">
+
+  <!-- ═══════════════════ SIDEBAR ═══════════════════ -->
+  <left>
+    <VBox prefWidth="220" minWidth="220"
+      style="-fx-background-color: #1e1035;
+             -fx-border-color: rgba(255,255,255,0.06);
+             -fx-border-width: 0 1 0 0;">
+
+      <!-- Brand -->
+      <HBox spacing="10" alignment="CENTER_LEFT"
+        style="-fx-padding: 22 18; -fx-border-color: rgba(255,255,255,0.06); -fx-border-width: 0 0 1 0;">
+        <StackPane>
+          <Rectangle width="36" height="36" arcWidth="10" arcHeight="10"
+            style="-fx-fill: linear-gradient(to bottom right, #c9a84c, #7c5cbf);" />
+          <Label text="🎸" style="-fx-font-size: 16px;" />
+        </StackPane>
+        <VBox spacing="2">
+          <Label text="ASH"
+            style="-fx-font-family: 'Georgia'; -fx-font-size: 15px; -fx-font-weight: bold; -fx-text-fill: #e8e8f0;" />
+          <Label text="VENDOR"
+            style="-fx-font-size: 9px; -fx-text-fill: #c9a84c; -fx-font-weight: bold;" />
+        </VBox>
+      </HBox>
+
+      <!-- Nav -->
+      <VBox spacing="2" style="-fx-padding: 14 10;" VBox.vgrow="ALWAYS">
+        <Label text="MY STORE"
+          style="-fx-font-size: 9px; -fx-text-fill: #3a3a55; -fx-font-weight: bold; -fx-padding: 6 8 4 8;" />
+        <Button text="📦  My Listed Items"
+          maxWidth="Infinity"
+          style="-fx-background-color: rgba(201,168,76,0.10);
+                 -fx-text-fill: #c9a84c; -fx-font-size: 13px;
+                 -fx-background-radius: 10; -fx-cursor: hand;
+                 -fx-padding: 10 12; -fx-alignment: CENTER_LEFT;" />
+        <Label text="SETTINGS"
+          style="-fx-font-size: 9px; -fx-text-fill: #3a3a55; -fx-font-weight: bold; -fx-padding: 14 8 4 8;" />
+        <Button text="🔑  Change Password" onAction="#handleChangePassword"
+          maxWidth="Infinity"
+          style="-fx-background-color: transparent;
+                 -fx-text-fill: #6b6b85; -fx-font-size: 13px;
+                 -fx-background-radius: 10; -fx-cursor: hand;
+                 -fx-padding: 10 12; -fx-alignment: CENTER_LEFT;" />
+        <Button text="🚪  Logout" onAction="#handleLogout"
+          maxWidth="Infinity"
+          style="-fx-background-color: transparent;
+                 -fx-text-fill: #6b6b85; -fx-font-size: 13px;
+                 -fx-background-radius: 10; -fx-cursor: hand;
+                 -fx-padding: 10 12; -fx-alignment: CENTER_LEFT;" />
+      </VBox>
+
+      <!-- Vendor Footer -->
+      <HBox spacing="10" alignment="CENTER_LEFT"
+        style="-fx-padding: 14 16; -fx-background-color: rgba(255,255,255,0.02);
+               -fx-border-color: rgba(255,255,255,0.06); -fx-border-width: 1 0 0 0;">
+        <StackPane>
+          <Circle radius="16"
+            style="-fx-fill: linear-gradient(to bottom right, #c9a84c, #9a7030);" />
+          <Label text="V" style="-fx-font-size: 12px; -fx-font-weight: bold; -fx-text-fill: white;" />
+        </StackPane>
+        <VBox spacing="2">
+          <Label fx:id="vendorLabel" text="Vendor"
+            style="-fx-font-size: 12px; -fx-font-weight: 600; -fx-text-fill: #e8e8f0;" />
+          <Label text="Partner Account"
+            style="-fx-font-size: 11px; -fx-text-fill: #c9a84c;" />
+        </VBox>
+      </HBox>
+    </VBox>
+  </left>
+
+  <!-- ═══════════════════ MAIN CONTENT ═══════════════════ -->
+  <center>
+    <VBox style="-fx-background-color: #1a0a2e;">
+
+      <!-- Topbar -->
+      <HBox alignment="CENTER_LEFT" spacing="12"
+        style="-fx-padding: 0 24; -fx-min-height: 64; -fx-max-height: 64;
+               -fx-background-color: rgba(26,10,46,0.95);
+               -fx-border-color: rgba(255,255,255,0.06); -fx-border-width: 0 0 1 0;">
+        <Label text="My Listed Items"
+          style="-fx-font-family: 'Georgia'; -fx-font-size: 20px; -fx-font-weight: bold; -fx-text-fill: #e8e8f0;" />
+        <Region HBox.hgrow="ALWAYS" />
+        <!-- Search Bar -->
+        <HBox spacing="8" alignment="CENTER"
+          style="-fx-background-color: #1e1035;
+                 -fx-border-color: rgba(255,255,255,0.08);
+                 -fx-border-radius: 10; -fx-background-radius: 10;
+                 -fx-border-width: 1; -fx-padding: 8 14;">
+          <Label text="🔍" style="-fx-text-fill: #6b6b85; -fx-font-size: 13px;" />
+          <TextField fx:id="searchField" promptText="Search by name or brand..."
+            prefWidth="220" onKeyReleased="#handleSearch"
+            style="-fx-background-color: transparent; -fx-border-width: 0;
+                   -fx-text-fill: #e8e8f0; -fx-prompt-text-fill: #3a3a55; -fx-font-size: 13px;" />
+        </HBox>
+        <Button text="Search" onAction="#handleSearch"
+          style="-fx-background-color: #c9a84c; -fx-text-fill: #1a0a2e;
+                 -fx-font-weight: bold; -fx-font-size: 13px;
+                 -fx-background-radius: 10; -fx-cursor: hand; -fx-padding: 8 18;" />
+        <Button text="✕ Clear" onAction="#handleClearSearch"
+          style="-fx-background-color: rgba(255,255,255,0.06);
+                 -fx-border-color: rgba(255,255,255,0.10);
+                 -fx-border-radius: 10; -fx-background-radius: 10;
+                 -fx-border-width: 1; -fx-text-fill: #8b8ba0;
+                 -fx-font-size: 13px; -fx-cursor: hand; -fx-padding: 8 14;" />
+        <Label fx:id="statusLabel" text="Ready"
+          style="-fx-font-size: 12px; -fx-text-fill: #3ddc84; -fx-font-weight: bold;" />
+      </HBox>
+
+      <!-- Filter Row -->
+      <HBox spacing="10" alignment="CENTER_LEFT"
+        style="-fx-padding: 10 24;
+               -fx-background-color: rgba(30,16,53,0.8);
+               -fx-border-color: rgba(255,255,255,0.05); -fx-border-width: 0 0 1 0;">
+        <Label text="Filter:" style="-fx-font-size: 11px; -fx-font-weight: bold; -fx-text-fill: #6b6b85;" />
+        <TextField fx:id="filterBrand" promptText="Brand..."
+          prefWidth="110" onKeyReleased="#handleFilter"
+          style="-fx-background-color: rgba(255,255,255,0.04);
+                 -fx-border-color: rgba(255,255,255,0.08);
+                 -fx-border-radius: 8; -fx-background-radius: 8; -fx-border-width: 1;
+                 -fx-text-fill: #e8e8f0; -fx-prompt-text-fill: #3a3a55; -fx-font-size: 12px; -fx-padding: 7 10;" />
+        <TextField fx:id="filterCategory" promptText="Category..."
+          prefWidth="110" onKeyReleased="#handleFilter"
+          style="-fx-background-color: rgba(255,255,255,0.04);
+                 -fx-border-color: rgba(255,255,255,0.08);
+                 -fx-border-radius: 8; -fx-background-radius: 8; -fx-border-width: 1;
+                 -fx-text-fill: #e8e8f0; -fx-prompt-text-fill: #3a3a55; -fx-font-size: 12px; -fx-padding: 7 10;" />
+        <TextField fx:id="filterMinPrice" promptText="Min $"
+          prefWidth="90" onKeyReleased="#handleFilter"
+          style="-fx-background-color: rgba(255,255,255,0.04);
+                 -fx-border-color: rgba(255,255,255,0.08);
+                 -fx-border-radius: 8; -fx-background-radius: 8; -fx-border-width: 1;
+                 -fx-text-fill: #e8e8f0; -fx-prompt-text-fill: #3a3a55; -fx-font-size: 12px; -fx-padding: 7 10;" />
+        <TextField fx:id="filterMaxPrice" promptText="Max $"
+          prefWidth="90" onKeyReleased="#handleFilter"
+          style="-fx-background-color: rgba(255,255,255,0.04);
+                 -fx-border-color: rgba(255,255,255,0.08);
+                 -fx-border-radius: 8; -fx-background-radius: 8; -fx-border-width: 1;
+                 -fx-text-fill: #e8e8f0; -fx-prompt-text-fill: #3a3a55; -fx-font-size: 12px; -fx-padding: 7 10;" />
+      </HBox>
+
+      <!-- Table + Add Form split -->
+      <HBox VBox.vgrow="ALWAYS" spacing="0">
+
+        <!-- Inventory Table -->
+        <VBox HBox.hgrow="ALWAYS" spacing="12" style="-fx-padding: 20 16 16 24;">
+          <Label text="My Products"
+            style="-fx-font-family: 'Georgia'; -fx-font-size: 16px;
+                   -fx-font-weight: bold; -fx-text-fill: #e8e8f0;" />
+
+          <ScrollPane fx:id="productScrollPane" VBox.vgrow="ALWAYS" fitToWidth="true"
+            style="-fx-background-color: transparent; -fx-background: transparent;
+                   -fx-border-width: 0; -fx-padding: 0;">
+            <FlowPane fx:id="productGrid" hgap="16" vgap="16"
+              style="-fx-background-color: transparent; -fx-padding: 4 4 16 4;">
+            </FlowPane>
+          </ScrollPane>
+
+          <!-- Report Area -->
+          <TextArea fx:id="reportArea" prefHeight="110" editable="false"
+            promptText="Your sold items report will appear here..."
+            style="-fx-background-color: #1e1035;
+                   -fx-border-color: rgba(255,255,255,0.07);
+                   -fx-border-radius: 10; -fx-background-radius: 10;
+                   -fx-border-width: 1; -fx-text-fill: #c9a84c;
+                   -fx-font-family: 'Courier New'; -fx-font-size: 12;" />
+        </VBox>
+
+        <!-- Add / Edit Panel -->
+        <VBox prefWidth="300" minWidth="280" spacing="14"
+          style="-fx-background-color: #1e1035;
+                 -fx-border-color: rgba(255,255,255,0.06);
+                 -fx-border-width: 0 0 0 1;
+                 -fx-padding: 20 18 18 18;">
+          <Label text="Add / Edit Item"
+            style="-fx-font-family: 'Georgia'; -fx-font-size: 15px;
+                   -fx-font-weight: bold; -fx-text-fill: #e8e8f0;" />
+
+          <TextField fx:id="nameField" promptText="Product Name"
+            style="-fx-background-color: rgba(255,255,255,0.04);
+                   -fx-border-color: rgba(255,255,255,0.09);
+                   -fx-border-radius: 10; -fx-background-radius: 10; -fx-border-width: 1;
+                   -fx-text-fill: #e8e8f0; -fx-prompt-text-fill: #3a3a55;
+                   -fx-font-size: 13px; -fx-padding: 10 14;" />
+          <TextField fx:id="brandField" promptText="Brand"
+            style="-fx-background-color: rgba(255,255,255,0.04);
+                   -fx-border-color: rgba(255,255,255,0.09);
+                   -fx-border-radius: 10; -fx-background-radius: 10; -fx-border-width: 1;
+                   -fx-text-fill: #e8e8f0; -fx-prompt-text-fill: #3a3a55;
+                   -fx-font-size: 13px; -fx-padding: 10 14;" />
+          <HBox spacing="10">
+            <TextField fx:id="priceField" promptText="Price ($)" HBox.hgrow="ALWAYS"
+              style="-fx-background-color: rgba(255,255,255,0.04);
+                     -fx-border-color: rgba(255,255,255,0.09);
+                     -fx-border-radius: 10; -fx-background-radius: 10; -fx-border-width: 1;
+                     -fx-text-fill: #e8e8f0; -fx-prompt-text-fill: #3a3a55;
+                     -fx-font-size: 13px; -fx-padding: 10 14;" />
+            <TextField fx:id="qtyField" promptText="Qty" prefWidth="80"
+              style="-fx-background-color: rgba(255,255,255,0.04);
+                     -fx-border-color: rgba(255,255,255,0.09);
+                     -fx-border-radius: 10; -fx-background-radius: 10; -fx-border-width: 1;
+                     -fx-text-fill: #e8e8f0; -fx-prompt-text-fill: #3a3a55;
+                     -fx-font-size: 13px; -fx-padding: 10 14;" />
+          </HBox>
+          <TextField fx:id="categoryField" promptText="Category"
+            style="-fx-background-color: rgba(255,255,255,0.04);
+                   -fx-border-color: rgba(255,255,255,0.09);
+                   -fx-border-radius: 10; -fx-background-radius: 10; -fx-border-width: 1;
+                   -fx-text-fill: #e8e8f0; -fx-prompt-text-fill: #3a3a55;
+                   -fx-font-size: 13px; -fx-padding: 10 14;" />
+
+          <Button fx:id="addBtn" text="＋  Add Item" onAction="#handleAddProduct"
+            maxWidth="Infinity"
+            style="-fx-background-color: #c9a84c; -fx-text-fill: #1a0a2e;
+                   -fx-font-weight: bold; -fx-font-size: 13px;
+                   -fx-background-radius: 10; -fx-cursor: hand; -fx-padding: 11;" />
+
+          <HBox spacing="10">
+            <Button text="Cancel" onAction="#handleCancel" HBox.hgrow="ALWAYS"
+              maxWidth="Infinity"
+              style="-fx-background-color: rgba(255,255,255,0.05);
+                     -fx-border-color: rgba(255,255,255,0.09);
+                     -fx-border-radius: 10; -fx-background-radius: 10; -fx-border-width: 1;
+                     -fx-text-fill: #8b8ba0; -fx-font-size: 13px;
+                     -fx-cursor: hand; -fx-padding: 9;" />
+            <Button text="🗑 Delete" onAction="#handleDeleteProduct" HBox.hgrow="ALWAYS"
+              maxWidth="Infinity"
+              style="-fx-background-color: rgba(255,92,92,0.15);
+                     -fx-border-color: rgba(255,92,92,0.35);
+                     -fx-border-radius: 10; -fx-background-radius: 10; -fx-border-width: 1;
+                     -fx-text-fill: #ff5c5c; -fx-font-size: 13px;
+                     -fx-cursor: hand; -fx-padding: 9;" />
+          </HBox>
+
+          <Button text="📊  Generate Sales Report" onAction="#handleGenerateReport"
+            maxWidth="Infinity"
+            style="-fx-background-color: #0a1a3a; -fx-text-fill: #00eaff;
+                   -fx-font-weight: bold; -fx-font-size: 13px;
+                   -fx-background-radius: 10; -fx-cursor: hand; -fx-padding: 11;
+                   -fx-border-color: #00eaff; -fx-border-radius: 10; -fx-border-width: 1;
+                   -fx-effect: dropshadow(gaussian, #00eaff, 8, 0.5, 0, 0);" />
+
+          <Button text="📈  Daily Profit Graph" onAction="#handleShowProfitGraph"
+            maxWidth="Infinity"
+            style="-fx-background-color: #0a2a1a; -fx-text-fill: #00ff88;
+                   -fx-font-weight: bold; -fx-font-size: 13px;
+                   -fx-background-radius: 10; -fx-cursor: hand; -fx-padding: 11;
+                   -fx-border-color: #00ff88; -fx-border-radius: 10; -fx-border-width: 1;
+                   -fx-effect: dropshadow(gaussian, #00ff88, 8, 0.5, 0, 0);" />
+        </VBox>
+      </HBox>
+    </VBox>
+  </center>
+</BorderPane>

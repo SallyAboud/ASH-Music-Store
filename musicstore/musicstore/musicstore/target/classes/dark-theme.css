@@ -1,0 +1,252 @@
+/* ═══════════════════════════════════════════════════════
+   ASH Store — Dark Luxury Theme
+   ═══════════════════════════════════════════════════════ */
+
+/* ── ROOT ───────────────────────────────────────────── */
+.root {
+    -fx-background-color: #1a0a2e;
+    -fx-font-family: "Segoe UI", "Arial", sans-serif;
+    -fx-font-size: 13px;
+}
+
+/* ── TABLE VIEW ─────────────────────────────────────── */
+.table-view {
+    -fx-background-color: #1e1035;
+    -fx-border-color: rgba(255,255,255,0.07);
+    -fx-border-radius: 14;
+    -fx-background-radius: 14;
+    -fx-padding: 0;
+}
+
+.table-view .column-header-background {
+    -fx-background-color: #1a1a28;
+    -fx-border-color: rgba(255,255,255,0.06);
+    -fx-border-width: 0 0 1 0;
+}
+
+.table-view .column-header,
+.table-view .filler {
+    -fx-background-color: transparent;
+    -fx-border-color: transparent;
+    -fx-size: 40;
+}
+
+.table-view .column-header .label {
+    -fx-text-fill: #6b6b85;
+    -fx-font-weight: bold;
+    -fx-font-size: 11px;
+}
+
+.table-view .table-row-cell {
+    -fx-background-color: #1e1035;
+    -fx-border-color: transparent transparent rgba(255,255,255,0.04) transparent;
+    -fx-border-width: 1;
+    -fx-cell-size: 56px;
+}
+
+.table-view .table-row-cell:odd {
+    -fx-background-color: rgba(255,255,255,0.015);
+}
+
+.table-view .table-row-cell:selected {
+    -fx-background-color: rgba(201,168,76,0.12);
+    -fx-border-color: rgba(201,168,76,0.3);
+}
+
+.table-view .table-row-cell:hover {
+    -fx-background-color: rgba(255,255,255,0.04);
+}
+
+.table-view .table-cell {
+    -fx-text-fill: #c8c8d8;
+    -fx-alignment: CENTER_LEFT;
+    -fx-padding: 6 12;
+    -fx-border-color: transparent;
+}
+
+.table-view .table-row-cell:selected .table-cell {
+    -fx-text-fill: #e8e8f0;
+}
+
+/* Scrollbar inside table */
+.table-view .scroll-bar:vertical,
+.table-view .scroll-bar:horizontal {
+    -fx-background-color: transparent;
+}
+
+.table-view .scroll-bar .thumb {
+    -fx-background-color: rgba(255,255,255,0.08);
+    -fx-background-radius: 4;
+}
+
+/* ── LIST VIEW ──────────────────────────────────────── */
+.list-view {
+    -fx-background-color: rgba(255,255,255,0.02);
+    -fx-border-color: rgba(255,255,255,0.06);
+    -fx-border-radius: 10;
+    -fx-background-radius: 10;
+    -fx-border-width: 1;
+}
+
+.list-cell {
+    -fx-background-color: transparent;
+    -fx-text-fill: #b0b0c8;
+    -fx-font-size: 12px;
+    -fx-padding: 6 12;
+    -fx-border-color: transparent transparent rgba(255,255,255,0.04) transparent;
+    -fx-border-width: 1;
+    -fx-font-family: "Courier New";
+}
+
+.list-cell:selected {
+    -fx-background-color: rgba(201,168,76,0.12);
+    -fx-text-fill: #e8e8f0;
+}
+
+.list-cell:hover {
+    -fx-background-color: rgba(255,255,255,0.04);
+}
+
+/* ── SCROLL BAR ─────────────────────────────────────── */
+.scroll-bar {
+    -fx-background-color: transparent;
+}
+
+.scroll-bar .thumb {
+    -fx-background-color: rgba(255,255,255,0.1);
+    -fx-background-radius: 4;
+}
+
+.scroll-bar .track {
+    -fx-background-color: transparent;
+}
+
+.scroll-bar .increment-button,
+.scroll-bar .decrement-button {
+    -fx-background-color: transparent;
+    -fx-opacity: 0;
+}
+
+/* ── CHECKBOX ───────────────────────────────────────── */
+.check-box .box {
+    -fx-background-color: rgba(255,255,255,0.05);
+    -fx-border-color: rgba(255,255,255,0.15);
+    -fx-border-radius: 5;
+    -fx-background-radius: 5;
+}
+
+.check-box:selected .box {
+    -fx-background-color: rgba(201,168,76,0.25);
+    -fx-border-color: #c9a84c;
+}
+
+.check-box .mark {
+    -fx-background-color: #c9a84c;
+}
+
+/* ── RADIO BUTTON ───────────────────────────────────── */
+.radio-button .radio {
+    -fx-background-color: rgba(255,255,255,0.04);
+    -fx-border-color: rgba(255,255,255,0.2);
+}
+
+.radio-button:selected .radio {
+    -fx-background-color: rgba(201,168,76,0.2);
+    -fx-border-color: #c9a84c;
+}
+
+.radio-button:selected .dot {
+    -fx-background-color: #c9a84c;
+}
+
+/* ── SEPARATOR ──────────────────────────────────────── */
+.separator .line {
+    -fx-border-color: rgba(255,255,255,0.06);
+}
+
+/* ── SCROLL PANE ────────────────────────────────────── */
+.scroll-pane {
+    -fx-background-color: transparent;
+    -fx-background: transparent;
+    -fx-border-width: 0;
+}
+
+.scroll-pane > .viewport {
+    -fx-background-color: transparent;
+}
+
+/* ── DIALOG / ALERT ─────────────────────────────────── */
+.dialog-pane {
+    -fx-background-color: #1e1035;
+    -fx-border-color: rgba(255,255,255,0.1);
+    -fx-border-radius: 14;
+    -fx-background-radius: 14;
+}
+
+.dialog-pane .header-panel {
+    -fx-background-color: #1a1a28;
+    -fx-border-color: rgba(255,255,255,0.06);
+    -fx-border-width: 0 0 1 0;
+}
+
+.dialog-pane .header-panel .label {
+    -fx-text-fill: #e8e8f0;
+    -fx-font-weight: bold;
+    -fx-font-size: 15px;
+}
+
+.dialog-pane .content.label {
+    -fx-text-fill: #b0b0c8;
+    -fx-font-size: 13px;
+}
+
+.dialog-pane .button-bar .button {
+    -fx-background-color: rgba(255,255,255,0.06);
+    -fx-border-color: rgba(255,255,255,0.1);
+    -fx-border-radius: 8;
+    -fx-background-radius: 8;
+    -fx-border-width: 1;
+    -fx-text-fill: #c8c8d8;
+    -fx-cursor: hand;
+    -fx-padding: 9 20;
+}
+
+.dialog-pane .button-bar .button:default {
+    -fx-background-color: #c9a84c;
+    -fx-text-fill: #1a0a2e;
+    -fx-font-weight: bold;
+}
+
+/* ── TEXT INPUT ─────────────────────────────────────── */
+.text-input {
+    -fx-text-fill: #e8e8f0;
+    -fx-prompt-text-fill: #3a3a55;
+}
+
+.text-area {
+    -fx-background-color: transparent;
+}
+
+.text-area .content {
+    -fx-background-color: transparent;
+}
+
+.text-area .viewport {
+    -fx-background-color: transparent;
+}
+
+/* ── LABEL (default) ────────────────────────────────── */
+.label {
+    -fx-text-fill: #c8c8d8;
+}
+
+/* ── TOOLTIP ────────────────────────────────────────── */
+.tooltip {
+    -fx-background-color: #1a1a28;
+    -fx-border-color: rgba(201,168,76,0.3);
+    -fx-border-width: 1;
+    -fx-border-radius: 8;
+    -fx-background-radius: 8;
+    -fx-text-fill: #e8e8f0;
+    -fx-font-size: 12px;
+}
