@@ -8,7 +8,7 @@ public class DBUtil {
 
     private static final String DB_URL = "jdbc:mysql://localhost:3306/musicstore?useSSL=false&serverTimezone=UTC";
     private static final String DB_USER = "root";
-    private static final String DB_PASSWORD = "S35@&Sql";
+    private static final String DB_PASSWORD = "1234";
 
     public static final ExecutorService DB_EXECUTOR = Executors.newFixedThreadPool(4);
 
